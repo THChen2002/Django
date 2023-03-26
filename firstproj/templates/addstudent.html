@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}顯示一筆資料{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+<form action = "/post/" method="POST" name = "addstd">
+    {% csrf_token %}
+    <div>請輸入姓名:
+        <input type="text" name="stdName" />
+        <br>
+        請輸入學號:
+        <input type="text" name="stdID" />
+        <br>
+        請輸入性別:
+        <input type="text" name="stdSex" />
+        <br>
+        請輸入生日:
+        <input type="date" name="stdBirth" />
+        <br>
+        請輸入電話:
+        <input type="text" name="stdPhone" />
+        <br>
+        <input type="submit" value = "送出資料" />
+    </div>
+    <div>接收的資料:{{mess}} </div>
+</form>
+{% endblock %}

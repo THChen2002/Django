@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}std{% endblock %}
+{% block content %}
+
+<br>
+<br>
+<br>
+		<h2>
+			{% for std in stds %}
+			<ul>
+				<li>姓名:{{std.name}}</li>
+				<li>學號:{{std.sid}}</li>
+				<li>年齡:{{std.age}}</li>
+			</ul>
+			{% empty %}
+
+			{% endfor %}
+		</h2>
+{% endblock %}
