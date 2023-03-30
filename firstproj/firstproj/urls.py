@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp.views import hello, hello1, hello2, student
-from students.views import listone, listall, post, post1, postform
+from students.views import listone, listall, post, post1, postform, delete, edit
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +28,8 @@ urlpatterns = [
     path('listall/', listall),
     path('post/', post),
     path('post1/', post1),
-    path('postform/', postform),   
+    path('postform/', postform),
+    path('delete/<str:stdID>/', delete),
+    path('edit/<str:stdID>/', edit), 
+    path('edit/<str:stdID>/<str:mode>/', edit),    
 ]

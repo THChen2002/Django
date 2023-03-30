@@ -49,3 +49,39 @@ def postform(request):
         unit = student.objects.create(stdName = stdName, stdID = stdID, stdSex = stdSex, stdBirth = stdBirth, stdPhone = stdPhone)
         unit.save() #寫入資料庫
     return render(request, "stdform.html", locals())
+
+def delete(request, stdID = None):
+    if id != None:
+        if request.method == "POST":
+            stdID = request.POST['stdID']
+        #刪除一筆記錄
+        try:
+            unit = student.objects.get(stdID = stdID)
+            unit.delete() #刪除資料庫資料
+            return redirect('/listall')
+        except:
+            mess = "查無該學號"
+    return render(request, "delete.html", locals())
+
+def edit(request, stdID=None, mode=None):
+    if mode == "edit":
+        unit = student.objects.get(stdID = stdID)
+        unit.stdName = request.GET["stdName"]
+        unit.stdID = request.GET["stdID"]
+        unit.stdSex = request.GET["stdSex"]
+        unit.stdBirth = request.GET["stdBirth"]
+        unit.stdPhone = request.GET["stdPhone"]
+        unit.save()
+        mess = "已修改完成"
+        return redirect('/')
+    else:
+        try:
+            unit = student.objects.get(stdID=stdID)
+            strDate = str(unit.stdBirth)
+            strDate2 = strDate.replace(" 年 ", "-")
+            strDate2 = strDate.replace(" 月 ", "-")
+            strDate2 = strDate.replace(" 日 ", "-")
+            unit.stdBirth = strDate2
+        except:
+            mess = "此學號不存在"
+        return render(request, "edit.html", locals())

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}資料表修改{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+<form action="/edit/{{unit.stdID}}/edit" method="GET" name="form1">
+    {% csrf_token %}
+    <table class="table">
+        <tr>
+            <th>請輸入姓名:</th><td><input type="text" name="stdName" value={{unit.stdName}}></td>
+        </tr>
+        <tr>
+            <th>請輸入學號:</th><td><input type="text" name="stdID" value={{unit.stdID}}></td>
+        </tr>
+        <tr>
+            <th>請輸入性別</th>
+            {% if unit.stdSex == "M" %}
+            <td>
+                <input type="radio" id="stdSex1" value="M" checked="checked" name="stdSex" >男生
+                <input type="radio" id="stdSex1" value="M" name="stdSex" >女生
+            </td>
+            {% else %}
+            <td>
+                <input type="radio" id="stdSex1" value="M" name="stdSex" >男生
+                <input type="radio" id="stdSex1" value="M" checked="checked" name="stdSex" >女生
+            </td>
+            {% endif %}
+        </tr>
+        <tr>
+            <th>請輸入生日:</th><td><input type="date" id="stdBirth" name="stdBirth" value={{unit.stdBirth}}></td>
+        </tr>
+        <tr><th>請輸入電話:</th><td ><input type="text" id="stdPhone" name="stdPhone" value={{unit.stdPhone}}></td>
+        </tr>
+        <tr>
+            <th colspan="2" align="center">
+            <input type="submit" name="button" id="button" value="送出">
+        </tr>
+    </table>
+    <span style="color:red">{{mess}}</span>
+</form>
+{% endblock %}
