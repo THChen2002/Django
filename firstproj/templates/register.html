@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}類別表單驗證{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+    <h2>基本表單驗證</h2>
+    <form action="." method="POST" name="stdform">
+        {% csrf_token %}
+        <table class="table">
+            <tr>
+                <th>請輸入帳號:</th><td>{{userform.userName}}</td>
+            </tr>
+            <tr>
+                <th>請輸入密碼:</th><td>{{userform.userPassword}}</td>
+            </tr>
+            <tr>
+                <th>請輸入姓:</th><td>{{userform.userLastName}}</td>
+            </tr>
+            <tr>
+                <th>請輸入名:</th><td>{{userform.userFirstName}}</td>
+            </tr>
+            <tr>
+                <th>請輸入信箱:</th><td>{{userform.userEmail}}</td>
+            </tr>
+            <tr>
+                <th colspan="2" align="center">
+                <input type="submit" name="button" id="button" value="送出">
+                <input type="reset" name="button2" id="button2" value="重設"></th>
+            </tr>
+        </table>
+    </form>
+{% endblock %}

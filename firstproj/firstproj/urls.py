@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from myapp.views import hello, hello1, hello2, student
 from students.views import listone, listall, post, post1, postform, delete, edit
+from CookieSessionApp import views as csviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +32,27 @@ urlpatterns = [
     path('postform/', postform),
     path('delete/<str:stdID>/', delete),
     path('edit/<str:stdID>/', edit), 
-    path('edit/<str:stdID>/<str:mode>/', edit),    
+    path('edit/<str:stdID>/<str:mode>/', edit),
+    # cookies
+    path('set_cookie/<str:key>/<str:value>/', csviews.set_cookie),
+	path('set_cookie2/<str:key>/<str:value>/', csviews.set_cookie2),
+	path('get_cookie/<str:key>/', csviews.get_cookie),
+	path('get_allcookies/', csviews.get_allcookies),
+	path('delete_cookie/<str:key>/', csviews.delete_cookie),
+    path('pagecount/', csviews.pagecount),
+    # sessions
+    path('set_session/<str:key>/<str:value>/', csviews.set_session),
+	path('get_session/<str:key>/', csviews.get_session),
+	path('get_allsessions/', csviews.get_allsessions),
+	# vote
+	path('vote/', csviews.vote),	
+	path('set_session2/<str:key>/<str:value>/', csviews.set_session2),
+	path('delete_session/<str:key>/', csviews.delete_session),
+    # login
+	path('login/', csviews.login),	
+	path('logout/', csviews.logout),
+
+    path('mypage/', csviews.mypage),
+    path('adduser/', csviews.adduser),
+    path('register/', csviews.register),     
 ]
