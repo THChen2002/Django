@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}顯示花朵資料{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+ <div class="jumbotron">
+    <div class="container">
+    Reference: Django The easy way by Samuli Natri
+    <h1 class="display-3">{{ flower.title }}</h1>
+    <div class="lead">{{ flower.description }}</div>
+    </div>
+ </div>
+ <a href="/flower/">Back</a>
+{% endblock %}

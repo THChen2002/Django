@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}顯示花朵資料{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class="card-columns">
+    {% for flower in flowers %}
+    <div class="card">
+        <div class="card-body">
+
+        <h5 class="card-title"><a href="{% url 'detail' flower.slug %}">{{ flower.title }}</a></h5>
+        <img class="card-img-top" src="{{ flower.image.url }}" alt="Card image cap">
+        <p class="card-text">{{ flower.description | truncatechars:100 }}</p>
+        <a href="#" class="card-link">{{ flower.category }}</a>
+        <a href="/admin/flower/flower/{{ flower.id }}/change/" class="card-link">Edit</a>
+        <a href="/admin/flower/flower/{{ flower.id }}/delete/" class="card-link">Delete</a>
+
+        <hr>
+
+        All flowers in the <strong>{{ flower.category }}</strong> category:<br>
+        {% for c_flower in flower.category.flower_set.all %}
+        <a href="#" class="card-link">{{ c_flower }}</a><br>
+        {% endfor %}
+
+        </div>
+    </div>
+    {% endfor %}
+ </div>
+{% endblock %}
