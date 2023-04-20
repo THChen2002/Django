@@ -1,0 +1,62 @@
+{% extends "news/baseadmin.html" %}
+{% load static %} 
+
+{% block content %}
+<br>
+<br>
+<br>
+	<div class="contentbox">
+		<form action="/newsedit/{{newsid}}/1/" id="form1" name="form1" method="POST">
+		  {% csrf_token %}
+		  <table width="90%" align="center">
+			<tr>
+			  <th colspan="2" align="left"> 編輯新聞</th>
+			</tr>
+			<tr>
+			  <td width="20%" valign="baseline"><strong>分類</strong></td>
+			  <td valign="baseline">
+				  <select name="news_type" id="news_type">
+					  {% for category in categories %}
+						  {% if type == category %}
+							  <option value={{category}} selected="selected">{{category}}</option>
+						  {% else %}
+							  <option value={{category}}>{{category}}</option>
+						  {% endif %}
+					  {% endfor %}
+				  </select>
+			  </td>
+			</tr>
+			<tr>
+			  <td valign="baseline"><strong>標題</strong></td>
+			  <td valign="baseline"><input name="news_subject" type="text" id="news_subject" size="45" value="{{subject}}" /></td>
+			</tr>
+			<tr>
+			  <td valign="baseline"><strong>編輯者</strong></td>
+			  <td valign="baseline"><input type="text" name="news_editor" id="news_editor" value="{{editor}}" /></td>
+			</tr>
+			<tr>
+			  <td valign="baseline"><strong>內容</strong></td>
+			  <td valign="baseline"><textarea name="news_content" id="news_content" cols="60" rows="15">{{content}}</textarea></td>
+			</tr>
+			<tr>
+			  <td valign="baseline"><strong>審核</strong></td>
+			  <td valign="baseline">
+				{% if ok %}
+				  <input type="radio" name="news_ok" id="news_ok2" value="yes" checked="checked" />已通過
+				  <input name="news_ok" type="radio" id="news_ok" value="no" />審核中
+				{% else %}
+				  <input type="radio" name="news_ok" id="news_ok2" value="yes" />已通過
+				  <input name="news_ok" type="radio" id="news_ok" value="no" checked="checked" />審核中
+				{% endif %}
+			  </td>
+			</tr>
+			<tr>
+			  <td>&nbsp;</td>
+			  <td><input type="submit" name="button" id="button" value="送出" />
+			  <input type="button" name="button3" id="button3" value="回主頁面" onclick="window.location='/newsadminmain/'" /></td>
+			</tr>
+		  </table>
+		  <span style="color:red">{{message}}</span>
+		</form>
+	</div>
+{% endblock %}

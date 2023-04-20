@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}hello2{% endblock %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+		<img src = "{% static 'images/ball.png' %}" alt = "球" width = "32" height = "32">
+		<h1 class = "info">歡迎:{{username}}</h1>
+		<h2>時間:{{now}}</h2>
+		<h2>骰子1點數:{{dict1.num1}}</h2>
+		<h2>骰子2點數:{{dict1.num2}}</h2>
+		<h2>骰子3點數:{{dict1.num3}}</h2>
+		<h2>次數:{{local_times}}</h2>
+		<h2>分數:{{score}}<br>
+			{% if score >= 90 %}
+			A
+			{% elif score >= 80 %}
+			B
+			{% elif score >= 70 %}
+			C
+			{% elif score >= 60 %}
+			D
+			{% else %}
+			F
+			{% endif %}
+		</h2>
+{% endblock %}

@@ -127,18 +127,18 @@ def login(request):
 			if request.session['username']==username:
 				mess=request.session['username'] + " 您已登入過了！"
 				status="login"				
-	return render(request, 'login.html',locals())
+	return render(request, 'CookieSessionApp/login.html',locals())
 	
 def logout(request):
 	if 'username' in request.session:
 		mess=request.session['username'] + ' 您已登出!'
 		del request.session['username']	#刪除Session	
-	return render(request, 'login.html',locals())
+	return render(request, 'CookieSessionApp/login.html',locals())
 """
 def mypage(request):
 	if request.user.is_authenticated:
 		name=request.user.username
-	return render(request, "mypage.html", locals())
+	return render(request, "CookieSessionApp/mypage.html", locals())
 
 def login(request):
 	if request.method == 'POST':
@@ -154,7 +154,7 @@ def login(request):
 				mess = '帳號尚未啟用！'
 		else:
 			mess = '登入失敗！'
-	return render(request, "login.html", locals())
+	return render(request, "CookieSessionApp/login.html", locals())
 	
 def logout(request):
 	auth.logout(request)
@@ -189,4 +189,4 @@ def register(request):
 		user.last_name=userLastName  # 姓氏
 		user.save()
 		return redirect('/mypage/')
-	return render(request, "register.html", locals())
+	return render(request, "CookieSessionApp/register.html", locals())

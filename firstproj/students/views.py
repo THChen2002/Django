@@ -9,18 +9,18 @@ def listone(request):
         unit = student.objects.get(stdName="Mary") #讀取一筆資料
     except:
         errormessage = " (讀取錯誤!)"
-    return render(request, "listone.html", locals())
+    return render(request, "students/listone.html", locals())
 
 def listall(request):  
     allStudents = student.objects.all().order_by('id')  #讀取資料表, 依 id 遞增排序
-    return render(request, "listall.html", locals())
+    return render(request, "students/listall.html", locals())
 
 def post(request):
     if request.method == "POST":
         mess = "姓名:" + request.POST['stdName'] + "\n學號:" + request.POST['stdID'] + "\性別:" + request.POST['stdSex'] + "\n生日:" + request.POST['stdBirth'] + "\n電話:" + request.POST['stdPhone']
     else:
         mess = "表單資料尚未送出!"
-    return render(request, "addstudent.html", locals())
+    return render(request, "students/addstudent.html", locals())
 
 def post1(request):
     if request.method == "POST":
@@ -35,7 +35,7 @@ def post1(request):
         return redirect('/post1')
     else:
         mess = '請輸入資料(資料不作驗證)'
-    return render(request, "addstudent1.html", locals())
+    return render(request, "students/addstudent1.html", locals())
 
 def postform(request):
     stdform = PostForm()
@@ -48,7 +48,7 @@ def postform(request):
         #新增一筆記錄
         unit = student.objects.create(stdName = stdName, stdID = stdID, stdSex = stdSex, stdBirth = stdBirth, stdPhone = stdPhone)
         unit.save() #寫入資料庫
-    return render(request, "stdform.html", locals())
+    return render(request, "students/stdform.html", locals())
 
 def delete(request, stdID = None):
     if id != None:
@@ -61,7 +61,7 @@ def delete(request, stdID = None):
             return redirect('/listall')
         except:
             mess = "查無該學號"
-    return render(request, "delete.html", locals())
+    return render(request, "students/delete.html", locals())
 
 def edit(request, stdID=None, mode=None):
     if mode == "edit":
@@ -84,4 +84,4 @@ def edit(request, stdID=None, mode=None):
             unit.stdBirth = strDate2
         except:
             mess = "此學號不存在"
-        return render(request, "edit.html", locals())
+        return render(request, "students/edit.html", locals())

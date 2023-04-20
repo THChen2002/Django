@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}顯示所有資料{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+		<h2>顯示 student 資料表所有資料</h2>
+		<table class = "table table-striped">
+			<th>姓名</th><th>學號</th><th>性別</th><th>生日</th><th>電話</th><th>編輯</th><th>刪除</th>
+			{% for student in allStudents %}
+				<tr>
+					<td>{{ student.stdName }} </td>
+					<td>{{ student.stdID }} </td>
+					<td>{{ student.stdSex}} </td>
+					<td>{{ student.stdBirth }} </td>
+					<td>{{ student.stdPhone}} </td>					
+					<td> <a href="../edit/{{ student.stdID }}"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" width=20px height=20px/></a></td>
+					<td> <a href="../delete/{{ student.stdID }}"><img src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" width=20px height=20px/></a></td>
+				</tr>
+			{% endfor %}
+		</table>
+		<input type="button" onclick="location.href='../postform'" value="新增">
+{% endblock %}
+	

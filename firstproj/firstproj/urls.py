@@ -19,6 +19,7 @@ from myapp.views import hello, hello1, hello2, student
 from students.views import listone, listall, post, post1, postform, delete, edit
 from CookieSessionApp import views as csviews
 from flower import views as fviews
+from news import views as nviews
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -62,6 +63,23 @@ urlpatterns = [
     path('adduser/', csviews.adduser),
     path('register/', csviews.register),    
 
+    #news
+    path('', nviews.index),
+	path('newsindex/', nviews.index),
+	path('newsindex/<str:pageindex>/', nviews.index),
+	path('newsdetail/<int:detailid>/', nviews.detail),
+	path('newslogin/', nviews.login),
+	path('newslogout/', nviews.logout),
+	path('newsadminmain/', nviews.adminmain),
+	path('newsadminmain/<str:pageindex>/', nviews.adminmain),
+ 	path('newsadd/', nviews.newsadd),
+	path('newsedit/<int:newsid>/', nviews.newsedit),
+	path('newsedit/<int:newsid>/<str:edittype>/', nviews.newsedit),
+	path('newsdelete/<int:newsid>/', nviews.newsdelete),
+	path('newsdelete/<int:newsid>/<str:deletetype>/', nviews.newsdelete),
+
     path('flower/', fviews.flowers),
     path('flower/<slug:slug>/', fviews.detail, name='detail'), 
+
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

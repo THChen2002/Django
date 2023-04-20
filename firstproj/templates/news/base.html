@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>最新消息</title>
+	{% load static %}
+	<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<div id="warp">
+		<div id="header">
+			{% block login %}{% endblock %}
+			<div class="logo">
+				<img src="{% static "images/DWonline.png" %}" width="180" height="40" alt="dreamweaver.com.tw" />
+			</div>
+		</div>
+		<div class="headings">
+		  <h2>新聞系統</h2>
+		</div>  
+		{% block content %}{% endblock %}
+		<div id="footer">&copy; Copyright 2017 eHappy Studio 新聞系統</div>
+	</div>
+</body>
+</html>
