@@ -13,8 +13,9 @@
         <img class="card-img-top" src="{{ flower.image.url }}" alt="Card image cap">
         <p class="card-text">{{ flower.description | truncatechars:100 }}</p>
         <a href="#" class="card-link">{{ flower.category }}</a>
-        <a href="/admin/flower/flower/{{ flower.id }}/change/" class="card-link">Edit</a>
-        <a href="/admin/flower/flower/{{ flower.id }}/delete/" class="card-link">Delete</a>
+        <!--<a href="/admin/flower/flower/{{ flower.id }}/change/" class="card-link">Edit</a>-->
+        <a href="{% url 'edit' pk=flower.pk %}" class="card-link">Edit</a>
+        <a href="{% url 'delete' pk=flower.pk %}" class="card-link">Delete</a>
 
         <hr>
 

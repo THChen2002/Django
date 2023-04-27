@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="style.css">
     {% load static %}
-    <link href = "{% static 'css/style.css' %}" rel = "stylesheet" type = "text/css"/>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -29,12 +31,14 @@
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="background-color: #e3f2fd;">
         <a class="navbar-brand">
-            <img src="https://www.ntue.edu.tw/var/file/0/1000/img/368/footlogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="https://www.ntue.edu.tw/var/file/0/1000/img/368/footlogo.png" width="30" height="30"
+                class="d-inline-block align-top" alt="">
             國北教大
         </a>
         <a class="navbar-brand" href="/">MySite</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
@@ -46,53 +50,63 @@
                     <a class="nav-link" href="/std">Student <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/" role="button" data-toggle="dropdown" aria-expanded="false">
-                      Hello
+                    <a class="nav-link dropdown-toggle" href="/" role="button" data-toggle="dropdown"
+                        aria-expanded="false">
+                        Hello
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="/">Hello</a>
-                      <a class="dropdown-item" href="/hello1/aaa">Hello1</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/hello2/aaa">Hello2</a>
+                        <a class="dropdown-item" href="/">Hello</a>
+                        <a class="dropdown-item" href="/hello1/aaa">Hello1</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/hello2/aaa">Hello2</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/" role="button" data-toggle="dropdown" aria-expanded="false">
-                      Students
+                    <a class="nav-link dropdown-toggle" href="/" role="button" data-toggle="dropdown"
+                        aria-expanded="false">
+                        Students
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="/listone">listone</a>
-                      <a class="dropdown-item" href="/listall">listall</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/post">post</a>
-                      <a class="dropdown-item" href="/post1">post1</a>
-                      <a class="dropdown-item" href="/postform">postform</a>
+                        <a class="dropdown-item" href="/listone">listone</a>
+                        <a class="dropdown-item" href="/listall">listall</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/post">post</a>
+                        <a class="dropdown-item" href="/post1">post1</a>
+                        <a class="dropdown-item" href="/postform">postform</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/" role="button" data-toggle="dropdown" aria-expanded="false">
-                      flower
+                    <a class="nav-link dropdown-toggle" href="/" role="button" data-toggle="dropdown"
+                        aria-expanded="false">
+                        flower
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="/flower">flower</a>
-                      <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/flower">flower</a>
+                        <a class="dropdown-item" href="/flower/create/">Create Flower</a>
+                        <div class="dropdown-divider"></div>
                     </div>
                 </li>
             </ul>
             <form action="/flower/" method="get" class="form-inline mt-2 mt-md-0">
-                <input id="q" name="q" value="{{ request.GET.q }}" class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
+                <input id="q" name="q" value="{{ request.GET.q }}" class="form-control mr-sm-2" type="text"
+                    placeholder="Search..." aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </nav>
 
     <main role="main" class="container">
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
     </main><!-- /.container -->
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

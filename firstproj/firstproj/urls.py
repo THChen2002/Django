@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from myapp.views import hello, hello1, hello2, student
 from students.views import listone, listall, post, post1, postform, delete, edit
 from CookieSessionApp import views as csviews
@@ -63,6 +63,8 @@ urlpatterns = [
     path('adduser/', csviews.adduser),
     path('register/', csviews.register),    
 
+    path('accounts/', include('allauth.urls')),
+
     #news
     path('', nviews.index),
 	path('newsindex/', nviews.index),
@@ -79,6 +81,9 @@ urlpatterns = [
 	path('newsdelete/<int:newsid>/<str:deletetype>/', nviews.newsdelete),
 
     path('flower/', fviews.flowers),
+    path('flower/create/', fviews.create, name='create'),
+    path('flower/edit/<int:pk>/', fviews.edit, name='edit'),
+    path('flower/delete/<int:pk>/', fviews.delete, name='delete'),
     path('flower/<slug:slug>/', fviews.detail, name='detail'), 
 
 
