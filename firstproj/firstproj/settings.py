@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'captcha',
     'widget_tweaks',
     'myapp',
     'students',

@@ -4,28 +4,31 @@
 <br>
 <br>
 <br>
+{{ request.user.get_all_permissions }}
 <div class="card-columns">
     {% for flower in flowers %}
     <div class="card">
         <div class="card-body">
 
-        <h5 class="card-title"><a href="{% url 'detail' flower.slug %}">{{ flower.title }}</a></h5>
-        <img class="card-img-top" src="{{ flower.image.url }}" alt="Card image cap">
-        <p class="card-text">{{ flower.description | truncatechars:100 }}</p>
-        <a href="#" class="card-link">{{ flower.category }}</a>
-        <!--<a href="/admin/flower/flower/{{ flower.id }}/change/" class="card-link">Edit</a>-->
-        <a href="{% url 'edit' pk=flower.pk %}" class="card-link">Edit</a>
-        <a href="{% url 'delete' pk=flower.pk %}" class="card-link">Delete</a>
-
-        <hr>
-
-        All flowers in the <strong>{{ flower.category }}</strong> category:<br>
-        {% for c_flower in flower.category.flower_set.all %}
-        <a href="#" class="card-link">{{ c_flower }}</a><br>
-        {% endfor %}
+            <h5 class="card-title"><a href="{% url 'detail' flower.slug %}">{{ flower.title }}</a></h5>
+            <img class="card-img-top" src="{{ flower.image.url }}" alt="Card image cap">
+            <p class="card-text">{{ flower.description | truncatechars:100 }}</p>
+            <a href="#" class="card-link">{{ flower.category }}</a>
+            <!--<a href="/admin/flower/flower/{{ flower.id }}/change/" class="card-link">Edit</a>-->
+            {% if perms.flower.change_flower %}
+                <a href="{% url 'edit' pk=flower.pk %}" class="card-link">Edit</a>
+            {% endif %}
+            {% if perms.flower.delete_flower %}
+                <a href="{% url 'delete' pk=flower.pk %}" class="card-link">Delete</a>
+            {% endif %}
+            <hr>
+            All flowers in the <strong>{{ flower.category }}</strong> category:<br>
+            {% for c_flower in flower.category.flower_set.all %}
+            <a href="#" class="card-link">{{ c_flower }}</a><br>
+            {% endfor %}
 
         </div>
     </div>
     {% endfor %}
- </div>
+</div>
 {% endblock %}

@@ -64,6 +64,7 @@ urlpatterns = [
     path('register/', csviews.register),    
 
     path('accounts/', include('allauth.urls')),
+    path('captcha/', include('captcha.urls')),
 
     #news
     path('', nviews.index),
