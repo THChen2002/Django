@@ -5,8 +5,12 @@ from .forms import FlowerForm
 
 # Create your views here.
 def flowers(request):
-    flowers = Flower.objects.all()
-
+    q = request.GET.get('q', None)
+    flowers = ''
+    if q == None or q == "":
+        flowers = Flower.objects.all()
+    elif q !=  None:
+        flowers = Flower.objects.filter(title__contains=q)
     return render(request, 'flower/flower.html', {'flowers': flowers })
 
 def detail(request, slug=None):
